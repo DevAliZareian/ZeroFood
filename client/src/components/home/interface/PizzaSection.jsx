@@ -1,7 +1,9 @@
 import React from "react";
 import LoginBtn from "../../../components/global/LoginBtn";
 import Logo from "../../../components/environment/Logo";
-export default function PizzaSection({ setPopup }) {
+import { usePopup } from "../../../contexts/PopupContext";
+export default function PizzaSection() {
+  const { setPopup } = usePopup();
   return (
     <div className="reletive overflow-hidden h-[44rem] p-8 m-0 bg-gray-50 flex flex-col items-start justify-start rounded-br-[0.75rem]-[7.5rem]">
       <div className="absolute top-[9.375rem] left-0 w-[50%] h-[85%] ml-2 mt-[-1.5rem]">
@@ -16,9 +18,14 @@ export default function PizzaSection({ setPopup }) {
           سفارش آنلاین <span className="text-green-500">غذا</span>
         </h2>
         <p className="text-[0.875rem] font-normal text-stone-600">سفارش آنلاین غذا ، میوه، نان، شیرینی و ...</p>
-        <div className="flex items-center justify-between w-[60vw] min-w-[16.875rem] max-w-[50%] h-14 mt-[1.75rem] rounded-[5rem] bg-white shadow-div">
+        <div
+          onClick={() => {
+            setPopup((prevState) => ({ ...prevState, Map: true }));
+          }}
+          className="flex items-center justify-between cursor-pointer w-[60vw] min-w-[16.875rem] max-w-[50%] h-14 mt-[1.75rem] rounded-[5rem] bg-white shadow-div"
+        >
           <div className="flex items-center justify-center gap-2">
-            <svg className="mr-[1.1875rem]" width="17" height="20" viewBox="0 0 12 14" fill="var(--sf-inactive-dark)" xmlns="http://www.w3.org/2000/svg">
+            <svg className="mr-[1.1875rem]" width="17" height="20" viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
