@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url("../public/font/vazirmatn/Vazirmatn-FD-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url("../public/font/vazirmatn/Vazirmatn-FD-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url("../public/font/vazirmatn/Vazirmatn-FD-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url("../public/font/vazirmatn/Vazirmatn-FD-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url("../public/font/vazirmatn/Vazirmatn-FD-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url("../public/font/vazirmatn/Vazirmatn-FD-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url("../public/font/vazirmatn/Vazirmatn-FD-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url("../public/font/vazirmatn/Vazirmatn-FD-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Vazirmatn FD;
+  src: url("../public/font/vazirmatn/Vazirmatn-FD-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+*,
+*::before,
+*::after {
+  font-family: "Vazirmatn FD";
+}
+#combo-box-demo {
+  font-family: "Vazirmatn FD";
+}
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a0a0a5;
+  border: 3px solid #f4f4f4;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #babac0;
+  border: 3px solid #ffffff;
+  border-radius: 16px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+::-webkit-scrollbar-track:hover {
+  background-color: #f4f4f4;
+}
+::-webkit-scrollbar-track {
+  background-color: #0000;
+  border-radius: 7px;
+  cursor: pointer;
+}
