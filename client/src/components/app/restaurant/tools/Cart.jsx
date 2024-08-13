@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import BasketProduct from "./BasketProduct";
 import CartPrice from "./CartPrice";
 import CartForm from "../interface/CartForm";
@@ -8,14 +8,15 @@ import DescriptionOrder from "./DescriptionOrder";
 
 export default function Cart() {
   const { products, isPending } = useBasket();
+  const description = useRef("");
   return (
     <CartForm>
       {products.map((product) => (
         <BasketProduct key={product.id} title={product.title} price={product.price} />
       ))}
       <CartPrice isPending={isPending} />
-      <DescriptionOrder />
-      <SubmitOrder orders={products} />
+      <DescriptionOrder ref={description} />
+      <SubmitOrder orders={products} description={description} />
     </CartForm>
   );
 }
