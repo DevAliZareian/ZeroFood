@@ -8,6 +8,7 @@ import { routes } from "./routes";
 import { PopupProvider } from "./contexts/PopupContext";
 import { BasketProvider } from "./contexts/BasketContext";
 import { UserProvider } from "./contexts/UserContext";
+import { OrdersProvider } from "./contexts/OrdersContext";
 
 import FallBack from "./components/global/FallBack";
 
@@ -19,7 +20,9 @@ function App() {
         <Suspense fallback={<FallBack />}>
           <PopupProvider>
             <BasketProvider>
-              <RouterProvider router={createBrowserRouter(routes)} />
+              <OrdersProvider>
+                <RouterProvider router={createBrowserRouter(routes)} />
+              </OrdersProvider>
             </BasketProvider>
           </PopupProvider>
         </Suspense>

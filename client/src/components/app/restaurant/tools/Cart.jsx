@@ -15,7 +15,7 @@ export default function Cart() {
       ))}
       <CartPrice isPending={isPending} />
       <DescriptionOrder />
-      <SubmitOrder />
+      <SubmitOrder orders={products} />
     </CartForm>
   );
 }
