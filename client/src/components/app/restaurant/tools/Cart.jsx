@@ -13,7 +13,7 @@ export default function Cart() {
       {products.map((product) => (
         <BasketProduct key={product.id} title={product.title} price={product.price} />
       ))}
-      <CartPrice />
+      <CartPrice isPending={isPending} />
       <DescriptionOrder />
       <SubmitOrder />
     </CartForm>
