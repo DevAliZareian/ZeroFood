@@ -5,6 +5,6 @@ const PopupContext = createContext();
 export const usePopup = () => useContext(PopupContext);
 
 export const PopupProvider = ({ children }) => {
-  const [popup, setPopup] = useState({ loginForm: false, Map: false });
+  const [popup, setPopup] = useState({ loginForm: false, Map: false, orderDetails: false });
   return <PopupContext.Provider value={{ popup, setPopup }}>{children}</PopupContext.Provider>;
 };
