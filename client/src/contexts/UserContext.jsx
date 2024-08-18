@@ -4,7 +4,7 @@ import { getUserData } from "../services/apiAuth";
 
 const UserContext = createContext();
 
-export const usePerson = () => useContext(UserContext);
+export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
   const { data: user } = useQuery({
