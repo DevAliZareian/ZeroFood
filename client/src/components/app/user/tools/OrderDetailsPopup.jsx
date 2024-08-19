@@ -5,7 +5,7 @@ export default function OrderDetailsPopup() {
   const { setPopup } = usePopup();
   return (
     <div className="w-full h-screen flex items-center justify-center z-[99] inset-0 fixed bg-black bg-opacity-30">
-      <div className="w-[90vw] max-w-[640px] max-h-[90vh] overflow-hidden shadow z-50 bg-white rounded-[7px]">
+      <div className="w-[50vw] max-w-[640px] max-h-[90vh] overflow-hidden shadow z-50 bg-white rounded-[7px]">
         <div className="relative w-full h-[56px] pl-[56px] flex items-center justify-between p-[12px]">
           <button
             onClick={() => {
@@ -22,9 +22,24 @@ export default function OrderDetailsPopup() {
           <p className="text-[1.5rem] font-bold">اطلاعات سفارش</p>
           <p className="text-zinc-600">سید امیررضا سبزپوش - 09302018912</p>
         </div>
-        <section className="border border-green-500 m-[12px]">
-          <p>2x سالاد</p>
+        <section className="border border-solid border-zinc-600 rounded-[0.75rem] p-[12px] m-[12px]">
+          <p>دو عدد سالاد شیرازی - سه عدد ماکاراونی - سه کیلو تریاک - دو عدد سالاد شیرازی - سه عدد ماکاراونی - سه کیلو تریاک</p>
         </section>
+        <div className="p-[12px] flex items-center justify-between w-full">
+          <div className="flex flex-col items-start justify-center gap-2">
+            <p>آدرس: جهرم، فرهنگ‌شهر، خیابان امام رضا</p>
+            <p>پلاک: 123536985</p>
+            <h1 className="text-[1.25rem] font-bold">پرداختی</h1>
+            <p className="font-semibold text-zinc-600">
+              هزینه بسته‌بندی: <span className="text-zinc-600 font-normal">2,000 تومان</span>
+            </p>
+            <p className="font-semibold text-zinc-600">
+              مجموع: <span className="text-zinc-600 font-normal">142,000 تومان</span>
+            </p>
+          </div>
+          <img width={150} src="https://barcodeapi.org/api/qr/https%3A%2F%2Fgithub.com%2FDevAliZareian?" alt="barcode" />
+        </div>
+
         <form className="mt-0">
           <div className="p-[12px]">
             <button
