@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { usePopup } from "../../contexts/PopupContext";
 import { useGetQueryData } from "../../hooks/useGetQueryData";
+import { useUser } from "../../contexts/UserContext";
 
 export default function LoginBtn() {
   const { setPopup } = usePopup();
-  const user = useGetQueryData("user");
+  const user = useUser();
   const navigate = useNavigate();
   return (
     <>

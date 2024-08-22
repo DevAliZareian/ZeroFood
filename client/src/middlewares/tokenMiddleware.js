@@ -32,8 +32,8 @@ export async function fetchToken() {
   const accessToken = localStorage.getItem("accessToken");
   try {
     const response = await axios.post(`${BASE_URL}/auth/check/token`, null, { headers: { Authorization: `Bearer ${accessToken}` } });
-    console.log(response);
-    return response;
+    console.log(response.data.user);
+    return response.data.user;
   } catch (error) {
     console.error("Error fetching token:", error);
     throw error;
