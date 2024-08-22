@@ -1,4 +1,5 @@
 import React from "react";
+import Categories from "../tools/Categories";
 
 export default function Information({ data }) {
   return (
@@ -10,7 +11,7 @@ export default function Information({ data }) {
               <img
                 className="border border-solid border-[rgba(58,61,66,0.06)] rounded-[0.75rem]"
                 alt={data?.restaurant.title}
-                src="https://cdn.snappfood.ir/media/cache/vendor_logo/uploads/images/vendors/logos/5f7c5992998ef.jpg"
+                src={data?.restaurant.logo ? data.restaurant.logo : "https://cdn.snappfood.ir/media/cache/vendor_logo/uploads/images/vendors/logos/5f7c5992998ef.jpg"}
                 width="80"
                 height="80"
               />
@@ -51,18 +52,8 @@ export default function Information({ data }) {
             </button>
           </div>
         </section>
-        <nav className="h-[calc(-332px+100vh)] min-h-[9.375rem] overflow-y-auto flex flex-col items-end">
-          {data?.category.map((category) => (
-            <p
-              key={category.title}
-              className="mb-[1rem] pt-[0.125rem] pb-[0.125rem] pr-[0.75rem] pl-[0.75rem] font-bold text-[0.875rem] text-[rgb(58,61,66)] cursor-pointer border-l-[0.125rem] border-solid border-[rgb(58,61,66)]"
-            >
-              {category.title}
-            </p>
-          ))}
-        </nav>
+        <Categories data={data} />
       </div>
     </aside>
   );
 }
-//<p className="mb-[1rem] pt-[0.125rem] pb-[0.125rem] pr-[0.75rem] pl-[0.75rem] font-bold text-[0.875rem] text-[rgb(58,61,66)] cursor-pointer border-l-[0.125rem] border-solid border-[rgb(58,61,66)]">
