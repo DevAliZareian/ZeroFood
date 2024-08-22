@@ -11,7 +11,7 @@ export const BasketProvider = ({ children }) => {
   const queryClient = useQueryClient();
 
   const { mutateAsync: updateBasket, isPending } = useMutation({
-    mutationFn: (products) => axios.post("/api/update-basket", { products }),
+    mutationFn: (products) => axios.post("/api/update-basket", { products: products.id }),
     onSuccess: (updatedProducts) => {
       queryClient.setQueriesData(["basket"], updatedProducts);
     },

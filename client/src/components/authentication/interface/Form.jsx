@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Logo from "../../../components/environment/Logo";
 import { usePopup } from "../../../contexts/PopupContext";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
-export default function Form({ children, onSubmit }) {
+export default function Form({ children, onAuthorization, onLogin, authCode }) {
   const { setPopup } = usePopup();
   /* const loginFormRef = useRef(null); */
   /* useOnClickOutside(loginFormRef, () => {
@@ -31,11 +31,17 @@ export default function Form({ children, onSubmit }) {
           <Logo />
         </div>
         <div className="flex gap-2 items-center p-[12px]">
-          <p className="text-[1.5rem] font-bold m-0 p-0">ورود</p>
-          <p className="font-normal text-[1.5rem]">یا</p>
-          <p className="text-[1.5rem] font-bold m-0 p-0">عضویت</p>
+          {authCode ? (
+            <p className="text-[1.5rem] font-bold m-0 p-0">تأیید ایمیل</p>
+          ) : (
+            <>
+              <p className="text-[1.5rem] font-bold m-0 p-0">ورود</p>
+              <p className="font-normal text-[1.5rem]">یا</p>
+              <p className="text-[1.5rem] font-bold m-0 p-0">عضویت</p>
+            </>
+          )}
         </div>
-        <form onSubmit={onSubmit} className="flex flex-col p-[1.5rem]">
+        <form onSubmit={authCode ? onLogin : onAuthorization} className="flex flex-col p-[1.5rem]">
           {children}
         </form>
       </div>

@@ -22,8 +22,8 @@ export default function Information({ data }) {
                     <span className="ml-[0.5rem] flex items-center justify-center">
                       <svg className="ml-[0.25rem]" width="12" height="12" viewBox="0 0 12 12" fill="#FFCE00">
                         <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
+                          fillRule="evenodd"
+                          clipRule="evenodd"
                           d="M5.99984 9.62097L2.42572 11.5L3.10832 7.52016L0.216797 4.70163L4.21278 4.12098L5.99984 0.5L7.7869 4.12098L11.7829 4.70163L8.89136 7.52016L9.57395 11.5L5.99984 9.62097Z"
                         ></path>
                       </svg>
@@ -53,7 +53,10 @@ export default function Information({ data }) {
         </section>
         <nav className="h-[calc(-332px+100vh)] min-h-[9.375rem] overflow-y-auto flex flex-col items-end">
           {data?.category.map((category) => (
-            <p className="mb-[1rem] pt-[0.125rem] pb-[0.125rem] pr-[0.75rem] pl-[0.75rem] font-bold text-[0.875rem] text-[rgb(58,61,66)] cursor-pointer border-l-[0.125rem] border-solid border-[rgb(58,61,66)]">
+            <p
+              key={category.title}
+              className="mb-[1rem] pt-[0.125rem] pb-[0.125rem] pr-[0.75rem] pl-[0.75rem] font-bold text-[0.875rem] text-[rgb(58,61,66)] cursor-pointer border-l-[0.125rem] border-solid border-[rgb(58,61,66)]"
+            >
               {category.title}
             </p>
           ))}

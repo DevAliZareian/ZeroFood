@@ -6,11 +6,12 @@ import Menu from "./interface/Menu";
 import { useFetchDataOnLoad } from "../../../hooks/useFetchDataOnLoad";
 import LoginForm from "../../authentication/LoginForm";
 import { usePopup } from "../../../contexts/PopupContext";
+import { BASE_URL } from "../../../utils/constants";
 
 export default function Page() {
   let { id } = useParams();
   const { popup } = usePopup();
-  const { data, isPending, error } = useFetchDataOnLoad(`https://8ggbxf58-3000.inc1.devtunnels.ms/detail/rest?id=${id}`, id);
+  const { data, isPending, error } = useFetchDataOnLoad(`${BASE_URL}/detail/rest?id=${id}`, id);
   return (
     <>
       {popup.loginForm && <LoginForm />}

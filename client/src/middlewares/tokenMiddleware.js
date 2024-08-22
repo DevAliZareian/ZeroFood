@@ -21,7 +21,7 @@ async function isValidToken(token) {
     return false;
   }
   try {
-    const response = await axios.post(`${BASE_URL}/auth/validate`, { token });
+    const response = await axios.post(`${BASE_URL}/auth/check/token`, { token });
     return response.data.isValid;
   } catch (error) {
     console.error("Error validating token:", error);
@@ -29,9 +29,13 @@ async function isValidToken(token) {
   }
 }
 export async function fetchToken() {
-  const accessToken = await getAccessToken();
-  const response = await axios.get(`${BASE_URL}/protected-data`, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-  });
-  return response;
+  const accessToken = localStorage.getItem("accessToken");
+  try {
+    const response = await axios.post(`${BASE_URL}/auth/check/token`, null, { headers: { Authorization: `Bearer ${accessToken}` } });
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error("Error fetching token:", error);
+    throw error;
+  }
 }

@@ -5,18 +5,36 @@ import { fetchToken } from "../middlewares/tokenMiddleware";
 import { BASE_URL, HEADERS } from "../utils/constants";
 import { validateEmail } from "../utils/helpers";
 
-export async function login(userData) {
-  const user = { userIdentify: userData.email };
+export async function authorization(userData) {
+  const user = { email: userData.email };
   if (!userData.email || !validateEmail(userData.email)) {
     throw new Error("Invalid email address");
   }
   try {
-    const response = await axios.post(`${BASE_URL}/user/login`, user, { headers: HEADERS });
+    const response = await axios.post(`${BASE_URL}/auth/send/code`, user, { headers: HEADERS });
     if (response.status != 200) {
-      throw new Error(response.data.message || "Login failed!");
+      throw new Error(response.data.message || "authorization failed!");
     }
-    localStorage.setItem("accessToken", response.data.accessToken);
+    localStorage.setItem("authorizationToken", response.data.token);
     return response.data;
+  } catch (error) {
+    if (error.message.includes("network")) {
+      throw new Error("Network error.");
+    } else {
+      throw error;
+    }
+  }
+}
+export async function login(code) {
+  const authorizationToken = localStorage.getItem("authorizationToken");
+  const data = JSON.stringify({ userCode: code.code });
+  try {
+    const response = await axios.post(`${BASE_URL}/user/signin`, data, { headers: { Authorization: `Bearer ${authorizationToken}`, "Content-Type": "application/json" } });
+    if (response.status != 200) {
+      throw new Error(response.response.data.message || "Login failed!");
+    }
+    localStorage.setItem("accessToken", response.data.refreshToken);
+    return response;
   } catch (error) {
     if (error.message.includes("network")) {
       throw new Error("Network error.");

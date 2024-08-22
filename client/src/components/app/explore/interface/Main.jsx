@@ -1,9 +1,10 @@
 import React from "react";
 import { useFetchDataOnLoad } from "../../../../hooks/useFetchDataOnLoad";
 import Loading from "react-loading";
+import { BASE_URL } from "../../../../utils/constants";
 
 export default function Main({ children }) {
-  const { data, isPending } = useFetchDataOnLoad("https://8ggbxf58-3000.inc1.devtunnels.ms/rest/all", "restaurants");
+  const { data, isPending } = useFetchDataOnLoad(`${BASE_URL}/rest/all`, "restaurants");
   if (isPending) {
     return (
       <div className="flex items-center justify-center">

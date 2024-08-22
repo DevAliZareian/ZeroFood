@@ -1,7 +1,8 @@
 import React from "react";
-
+import { useGetQueryData } from "../../../../hooks/useGetQueryData";
+import Loading from "react-loading";
 export default function CartPrice({ isPending }) {
-  const { data } = useGetQueryData("basket");
+  const data = useGetQueryData("basket");
   return (
     <>
       {isPending ? (
@@ -17,7 +18,7 @@ export default function CartPrice({ isPending }) {
                 <div className="inline-flex items-center">
                   <div className="inline-flex flex-col items-start">
                     <span className="text-[0.875rem] text-[rgb(58,61,66)]">
-                      {data.price} <span className="text-[0.75rem] text-[rgb(83,86,92)]">تومان</span>
+                      120,000 <span className="text-[0.75rem] text-[rgb(83,86,92)]">تومان</span>
                     </span>
                   </div>
                 </div>
@@ -44,7 +45,7 @@ export default function CartPrice({ isPending }) {
               <div className="inline-flex items-center">
                 <div className="inline-flex flex-col items-start">
                   <span className="font-bold text-[0.875rem] text-[rgb(58,61,66)]">
-                    {data.sumPrice} <span className="text-[0.75rem] text-[rgb(83,86,92)]">تومان</span>
+                    12000 <span className="text-[0.75rem] text-[rgb(83,86,92)]">تومان</span>
                   </span>
                 </div>
               </div>

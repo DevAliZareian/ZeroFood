@@ -15,6 +15,7 @@ export default function Restaurants() {
           banner={restaurant.banner}
           logo={restaurant.logo}
           avgScore={restaurant.avgScore}
+          totalScore={restaurant.totalScore}
           category={restaurant.category}
           delivery={restaurant.delivery}
         />
