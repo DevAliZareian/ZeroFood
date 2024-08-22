@@ -4,8 +4,11 @@ import { usePopup } from "../../../contexts/PopupContext";
 import OrderDetailsPopup from "./tools/OrderDetailsPopup";
 import MyOrders from "./interface/MyOrders";
 import PersonalInformation from "./interface/PersonalInformation";
+import { logout } from "../../../services/apiAuth";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function RestaurantProfile() {
+  const queryClient = useQueryClient();
   const [section, setSection] = useState("profile");
   const { popup } = usePopup();
   return (
@@ -66,7 +69,14 @@ export default function RestaurantProfile() {
                       </svg>
                     ) : null}
                   </div>
-                  <div className="flex items-center justify-between pt-[1.375rem] pb-[1.375rem] pr-[1rem] pl-[1rem] text-right border-b-[0.0625rem] border-solid border-[rgba(58,61,66,0.06)]">
+                  <div
+                    onClick={() => {
+                      logout();
+                      queryClient.removeQueries("user", { exact: true });
+                      console.log("sfsf");
+                    }}
+                    className="flex items-center justify-between pt-[1.375rem] pb-[1.375rem] pr-[1rem] pl-[1rem] text-right border-b-[0.0625rem] border-solid border-[rgba(58,61,66,0.06)]"
+                  >
                     <span className="text-[0.875rem] text-[rgb(58,61,66)]">خروج</span>
                   </div>
                 </nav>

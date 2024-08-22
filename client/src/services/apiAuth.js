@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { fetchToken } from "../middlewares/tokenMiddleware";
 import { BASE_URL, HEADERS } from "../utils/constants";
 import { validateEmail } from "../utils/helpers";
+import { useQueryClient } from "@tanstack/react-query";
 
 export async function authorization(userData) {
   const user = { email: userData.email };
@@ -44,10 +44,9 @@ export async function login(code) {
   }
 }
 export function logout() {
-  const navigate = useNavigate();
   try {
     localStorage.removeItem("accessToken");
-    navigate("/", { replace: true });
+    console.log("tokenRemoved");
   } catch (error) {
     if (error.message.includes("network")) {
       throw new Error("Network error.");
@@ -59,10 +58,11 @@ export function logout() {
 export function getUserData() {
   try {
     const response = fetchToken();
-    if (!response.data) {
+    if (!response) {
       throw new Error("Failed to fetch user data");
     }
-    return response.data;
+    console.log(response);
+    return response;
   } catch (error) {
     if (error.message.includes("network")) {
       throw new Error("Network error.");
