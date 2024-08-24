@@ -1,7 +1,11 @@
 import React from "react";
 import AddToCart from "../tools/AddToCart";
+import { useBasket } from "../../../../contexts/BasketContext";
+import ChangeAmount from "../tools/ChangeAmount";
 
 export default function Food({ id, title, picture, description, price }) {
+  const basket = useBasket();
+  console.log(basket.products);
   return (
     <div className="w-full basis-[50%] max-w-[50%] border-b-[0.0625rem] border-l-[0.0625rem] border-solid border-[rgb(235,237,240)]">
       <section className="h-full pt-[1rem] pb-[1rem] pr-0 pl-0 flex flex-col">
@@ -28,7 +32,7 @@ export default function Food({ id, title, picture, description, price }) {
                   </div>
                 </div>
               </div>
-              <AddToCart id={id} title={title} price={price} />
+              {basket.products.some((product) => product.id === id) ? <ChangeAmount /> : <AddToCart id={id} title={title} price={price} />}
             </div>
           </footer>
         </div>
