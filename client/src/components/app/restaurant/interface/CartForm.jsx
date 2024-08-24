@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function CartForm({ children }) {
+export default function CartForm({ children, products }) {
   return (
     <form className="mt-[0.5rem] pt-[1rem] pr-[1rem] pb-[0.75rem] pl-[1rem] bg-white border-[0.0625rem] border-solid border-[rgba(58,61,66,0.06)] rounded-[0.5rem]">
       <div className="h-[1.5rem] mb-[0.5rem] flex items-center justify-between">
         <div className="flex">
-          <p className="font-bold text-[0.875rem] text-[rgb(83,86,92)]">سبد خرید</p>&nbsp;<span className="text-[0.875rem] text-[rgb(83,86,92)]">(۱)</span>
+          <p className="font-bold text-[0.875rem] text-[rgb(83,86,92)]">سبد خرید</p>&nbsp;<span className="text-[0.875rem] text-[rgb(83,86,92)]">({products.length})</span>
         </div>
         <button
           className="inline-flex items-center justify-center cursor-pointer transition-all w-[2rem] h-[2rem] rounded-[50%] text-green-500 bg-transparent shadow-none text-[0.875rem] font-bold min-w-[auto]"

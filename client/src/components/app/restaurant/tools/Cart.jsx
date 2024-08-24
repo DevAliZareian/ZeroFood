@@ -10,7 +10,7 @@ export default function Cart() {
   const { products, isPending } = useBasket();
   const description = useRef("");
   return (
-    <CartForm>
+    <CartForm products={products}>
       {products.map((product) => (
         <BasketProduct key={product.id} title={product.title} price={product.price} />
       ))}
