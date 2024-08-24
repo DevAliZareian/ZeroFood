@@ -6,11 +6,11 @@ import EmptyCart from "../tools/EmptyCart";
 
 import { useBasket } from "../../../../contexts/BasketContext";
 
-export default function Basket() {
+export default function Basket({ delivery }) {
   const { products } = useBasket();
   return (
     <BasketAside>
-      <Delivery />
+      <Delivery delivery={delivery} />
       {!products || products.length === 0 ? <EmptyCart /> : <Cart />}
     </BasketAside>
   );

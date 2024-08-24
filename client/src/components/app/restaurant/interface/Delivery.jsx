@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Delivery() {
+export default function Delivery({ delivery }) {
   return (
     <div className="mb-[0.5rem] pt-[0.25rem] pb-[0.25rem] pr-[0.75rem] pl-[0.75rem] bg-white border border-solid border-[rgba(58,61,66,0.06)] rounded-[0.5rem] flex items-center">
       <div className="pt-[0.75rem] pb-[0.75rem] pr-0 pl-0 grow shrink basis-[0%] flex items-center justify-between">
@@ -14,8 +14,8 @@ export default function Delivery() {
             ></path>
           </svg>
           <p className="text-[0.75rem] text-[rgb(58,61,66)]">پیک فروشنده</p>
-          <span className="mr-[0.25rem] font-bold text-[0.75rem] text-[rgb(58,61,66)]">۲۰,۰۰۰</span>
-          &nbsp;<span className="text-[0.75rem] text-[rgb(58,61,66)]">تومان</span>
+          <span className="mr-[0.25rem] font-bold text-[0.75rem] text-[rgb(58,61,66)]">{delivery?.restaurant.delivery ? delivery.restaurant.delivery : "رایگان"}</span>
+          &nbsp;<span className="text-[0.75rem] text-[rgb(58,61,66)]">{delivery?.restaurant.delivery ? delivery.restaurant.delivery : ""}</span>
         </div>
       </div>
     </div>

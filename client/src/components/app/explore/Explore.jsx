@@ -1,6 +1,5 @@
 import Header from "../../environment/Header";
 import Filter from "./tools/Filter";
-import Restaurant from "../cart/Restaurant";
 import Container from "./interface/Container";
 import Main from "./interface/Main";
 import SequentialFilter from "./tools/SequentialFilter";

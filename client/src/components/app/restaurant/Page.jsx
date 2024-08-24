@@ -19,7 +19,7 @@ export default function Page() {
       <Form data={data} isPending={isPending} error={error}>
         <Information data={data} />
         <Menu data={data} />
-        <Basket />
+        <Basket delivery={data} />
       </Form>
     </>
   );

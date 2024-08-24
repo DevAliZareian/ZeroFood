@@ -21,16 +21,18 @@ export default function Information({ data }) {
                 <div>
                   <div className="ml-[0.5rem] flex items-center justify-center">
                     <span className="ml-[0.5rem] flex items-center justify-center">
-                      <svg className="ml-[0.25rem]" width="12" height="12" viewBox="0 0 12 12" fill="#FFCE00">
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M5.99984 9.62097L2.42572 11.5L3.10832 7.52016L0.216797 4.70163L4.21278 4.12098L5.99984 0.5L7.7869 4.12098L11.7829 4.70163L8.89136 7.52016L9.57395 11.5L5.99984 9.62097Z"
-                        ></path>
-                      </svg>
-                      <span className="font-bold text-[0.75rem] text-[rgb(58,61,66)]">۴.۵</span>
+                      {data?.restaurant.avgScore ? (
+                        <svg className="ml-[0.25rem]" width="12" height="12" viewBox="0 0 12 12" fill="#FFCE00">
+                          <path
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            d="M5.99984 9.62097L2.42572 11.5L3.10832 7.52016L0.216797 4.70163L4.21278 4.12098L5.99984 0.5L7.7869 4.12098L11.7829 4.70163L8.89136 7.52016L9.57395 11.5L5.99984 9.62097Z"
+                          ></path>
+                        </svg>
+                      ) : null}
+                      <span className="font-bold text-[0.75rem] text-[rgb(58,61,66)]">{data?.restaurant.avgScore ? data?.restaurant.avgScore : null}</span>
                     </span>
-                    <p className="text-[0.75rem] text-[rgb(166,170,173)]">(۲,۴۶۷ امتیاز)</p>
+                    <p className="text-[0.75rem] text-[rgb(166,170,173)]">{data?.restaurant.totalScore ? `(${data?.restaurant.totalScore} امتیاز)` : "جدید"}</p>
                   </div>
                 </div>
               </div>
