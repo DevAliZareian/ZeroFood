@@ -19,6 +19,15 @@ export const BasketProvider = ({ children }) => {
       console.error(error.message);
     },
   });
+  const { mutateAsync: changeAmount } = useMutation({
+    mutationFn: (id, action) => axios.post(`/api/${action}`, { id: id }),
+    onSuccess: (updatedProducts) => {
+      queryClient.setQueriesData(["basket"], updatedProducts);
+    },
+    onError: (error) => {
+      console.error(error.message);
+    },
+  });
 
   const addProduct = (product) => {
     const updatedProducts = [...products, product];
@@ -26,5 +35,5 @@ export const BasketProvider = ({ children }) => {
     updateBasket(updatedProducts);
   };
 
-  return <BasketContext.Provider value={{ products, addProduct, isPending }}>{children}</BasketContext.Provider>;
+  return <BasketContext.Provider value={{ products, addProduct, changeAmount, isPending }}>{children}</BasketContext.Provider>;
 };
