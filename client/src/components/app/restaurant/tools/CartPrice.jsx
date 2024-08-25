@@ -1,12 +1,14 @@
 import React from "react";
+import IsPending from "../../../global/IsPending";
 import { useGetQueryData } from "../../../../hooks/useGetQueryData";
-import Loading from "react-loading";
+import { useBasket } from "../../../../contexts/BasketContext";
 export default function CartPrice({ isPending }) {
-  const data = useGetQueryData("basket");
+  const basket = useBasket();
+  console.log(basket);
   return (
     <>
-      {isPending ? (
-        <Loading type={"bubbles"} color="#22C55E" height={150} width={150} />
+      {isPending || !basket ? (
+        <IsPending />
       ) : (
         <>
           <div className="flex flex-col border-b border-solid border-[rgba(58,61,66,0.06)]">
@@ -18,7 +20,7 @@ export default function CartPrice({ isPending }) {
                 <div className="inline-flex items-center">
                   <div className="inline-flex flex-col items-start">
                     <span className="text-[0.875rem] text-[rgb(58,61,66)]">
-                      120,000 <span className="text-[0.75rem] text-[rgb(83,86,92)]">تومان</span>
+                      {basket.basket?.totalPrice} <span className="text-[0.75rem] text-[rgb(83,86,92)]">تومان</span>
                     </span>
                   </div>
                 </div>

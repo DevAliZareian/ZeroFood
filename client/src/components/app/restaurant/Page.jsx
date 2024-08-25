@@ -12,7 +12,6 @@ export default function Page() {
   let { id } = useParams();
   const { popup } = usePopup();
   const { data, isPending, error } = useFetchDataOnLoad(`${BASE_URL}/detail/rest?id=${id}`, id);
-  console.log(data);
   return (
     <>
       {popup.loginForm && <LoginForm />}

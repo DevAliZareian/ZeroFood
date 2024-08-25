@@ -14,8 +14,8 @@ export default function Delivery({ delivery }) {
             ></path>
           </svg>
           <p className="text-[0.75rem] text-[rgb(58,61,66)]">پیک فروشنده</p>
-          <span className="mr-[0.25rem] font-bold text-[0.75rem] text-[rgb(58,61,66)]">{delivery?.restaurant.delivery ? delivery.restaurant.delivery : "رایگان"}</span>
-          &nbsp;<span className="text-[0.75rem] text-[rgb(58,61,66)]">{delivery?.restaurant.delivery ? delivery.restaurant.delivery : ""}</span>
+          <span className="mr-[0.25rem] font-bold text-[0.75rem] text-[rgb(58,61,66)]">{delivery?.restaurant?.delivery ? delivery?.restaurant?.delivery : "رایگان"}</span>
+          &nbsp;<span className="text-[0.75rem] text-[rgb(58,61,66)]">{delivery?.restaurant?.delivery ? "تومان" : null}</span>
         </div>
       </div>
     </div>

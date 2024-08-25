@@ -51,7 +51,7 @@ export default function Restaurant({ id, title, logo, banner, avgScore, totalSco
                   <div className="inline-flex items-center">
                     <div className="inline-flex flex-col items-start">
                       <span className="font-bold text-[0.75rem] text-[rgb(58,61,66)]">
-                        {delivery} <span className="text-[0.75rem] text-[rgb(58,61,66)]">{delivery ? "تومان" : "رایگان"}</span>
+                        {delivery >= 1 ? delivery : null} <span className="text-[0.75rem] text-[rgb(58,61,66)]">{delivery ? "تومان" : "رایگان"}</span>
                       </span>
                     </div>
                   </div>

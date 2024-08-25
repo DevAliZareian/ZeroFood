@@ -1,6 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { BASE_URL, UserToken } from "../utils/constants";
+import { fetchBasket } from "../services/apiData";
 
 const BasketContext = createContext();
 
@@ -10,10 +12,27 @@ export const BasketProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const queryClient = useQueryClient();
 
+  const { data: basket, refetch } = useQuery({
+    queryKey: ["basket"],
+    queryFn: fetchBasket,
+  });
+
+  useEffect(() => {
+    const cartItems = basket?.cart.map((item) => ({
+      title: item.product.title,
+      price: item.product.price,
+      count: item.count,
+      description: item.product.description,
+      picture: item.product.picture,
+    }));
+    setProducts(cartItems);
+  }, [basket]);
+
   const { mutateAsync: updateBasket, isPending } = useMutation({
-    mutationFn: (products) => axios.post("/api/update-basket", { products: products.id }),
-    onSuccess: (updatedProducts) => {
-      queryClient.setQueriesData(["basket"], updatedProducts);
+    mutationFn: (product) => axios.post(`${BASE_URL}/cart/add`, { productId: product.id }, UserToken),
+    onSuccess: () => {
+      refetch();
+      console.log(products);
     },
     onError: (error) => {
       console.error(error.message);
@@ -32,8 +51,8 @@ export const BasketProvider = ({ children }) => {
   const addProduct = (product) => {
     const updatedProducts = [...products, product];
     setProducts(updatedProducts);
-    updateBasket(updatedProducts);
+    updateBasket(product);
   };
 
-  return <BasketContext.Provider value={{ products, addProduct, changeAmount, isPending }}>{children}</BasketContext.Provider>;
+  return <BasketContext.Provider value={{ basket, products, addProduct, changeAmount, isPending }}>{children}</BasketContext.Provider>;
 };

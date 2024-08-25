@@ -15,7 +15,7 @@ export default function Cart() {
         <BasketProduct key={product.id} title={product.title} price={product.price} />
       ))}
       <CartPrice isPending={isPending} />
-      <DescriptionOrder ref={description} />
+      <DescriptionOrder descriptionRef={description} />
       <SubmitOrder orders={products} description={description} />
     </CartForm>
   );
