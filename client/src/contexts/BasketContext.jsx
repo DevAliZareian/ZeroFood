@@ -15,6 +15,7 @@ export const BasketProvider = ({ children }) => {
   const { data: basket, refetch } = useQuery({
     queryKey: ["basket"],
     queryFn: fetchBasket,
+    enabled: !!localStorage.getItem("accessToken"),
   });
 
   useEffect(() => {
@@ -49,8 +50,12 @@ export const BasketProvider = ({ children }) => {
   });
 
   const addProduct = (product) => {
-    const updatedProducts = [...products, product];
-    setProducts(updatedProducts);
+    if (products) {
+      const updatedProducts = [...products, product];
+      setProducts(updatedProducts);
+    } else {
+      setProducts([product]);
+    }
     updateBasket(product);
   };
 
