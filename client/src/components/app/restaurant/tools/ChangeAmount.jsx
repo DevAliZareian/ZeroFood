@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-export default function ChangeAmount({ product }) {
-  const [amount, setAmount] = useState(1);
+export default function ChangeAmount({ product, count = 1 }) {
+  const [amount, setAmount] = useState(count);
   return (
     <div className="flex flex-col items-center mt-[0]">
       <div className="flex items-center justify-center min-h-[2.3125rem]">
