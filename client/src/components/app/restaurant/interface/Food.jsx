@@ -31,7 +31,7 @@ export default function Food({ id, title, picture, description, price }) {
                   </div>
                 </div>
               </div>
-              {basket.products?.some((product) => product.id === id) ? <ChangeAmount product={id} /> : <AddToCart id={id} title={title} price={price} />}
+              {basket.basket.cart?.some((product) => product.product.id === id) ? <ChangeAmount product={id} /> : <AddToCart id={id} title={title} price={price} />}
             </div>
           </footer>
         </div>
