@@ -7,8 +7,10 @@ import { useFetchDataOnLoad } from "../../../hooks/useFetchDataOnLoad";
 import LoginForm from "../../authentication/LoginForm";
 import { usePopup } from "../../../contexts/PopupContext";
 import { BASE_URL } from "../../../utils/constants";
+import { useState } from "react";
 
 export default function Page() {
+  const [selectedCategory, setSelectedCategory] = useState(null);
   let { id } = useParams();
   const { popup } = usePopup();
   const { data, isPending, error } = useFetchDataOnLoad(`${BASE_URL}/detail/rest?id=${id}`, id);
@@ -16,8 +18,8 @@ export default function Page() {
     <>
       {popup.loginForm && <LoginForm />}
       <Form data={data} isPending={isPending} error={error}>
-        <Information data={data} />
-        <Menu data={data} />
+        <Information selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} data={data} />
+        <Menu selectedCategory={selectedCategory} data={data} />
         <Basket delivery={data} />
       </Form>
     </>

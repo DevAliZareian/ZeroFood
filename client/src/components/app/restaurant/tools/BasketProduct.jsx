@@ -1,6 +1,6 @@
 import ChangeAmount from "./ChangeAmount";
 
-export default function BasketProduct({ title, price, count }) {
+export default function BasketProduct({ id, title, price, count }) {
   return (
     <div className="flex flex-col pr-0 pl-0 pt-[0.5rem] pb-[0.5rem] border-b border-solid border-[rgba(58,61,66,0.06)]">
       <div className="min-h-[2.5rem] flex justify-between items-center">
@@ -16,7 +16,7 @@ export default function BasketProduct({ title, price, count }) {
             </div>
           </div>
         </div>
-        <ChangeAmount count={count} />
+        <ChangeAmount product={id} count={count} />
       </div>
     </div>
   );

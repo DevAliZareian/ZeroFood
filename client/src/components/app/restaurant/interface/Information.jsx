@@ -1,7 +1,7 @@
 import React from "react";
 import Categories from "../tools/Categories";
 
-export default function Information({ data }) {
+export default function Information({ data, selectedCategory, setSelectedCategory }) {
   return (
     <aside className="basis-[25%] max-w-[25%] p-[calc(1rem)]">
       <div className="sticky top-[5.5rem]">
@@ -54,7 +54,7 @@ export default function Information({ data }) {
             </button>
           </div>
         </section>
-        <Categories data={data} />
+        <Categories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} data={data} />
       </div>
     </aside>
   );

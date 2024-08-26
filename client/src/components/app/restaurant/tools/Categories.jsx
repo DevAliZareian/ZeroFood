@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function Categories({ data }) {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+export default function Categories({ data, selectedCategory, setSelectedCategory }) {
   return (
     <nav className="h-[calc(-332px+100vh)] min-h-[9.375rem] overflow-y-auto flex flex-col items-end">
       {data?.category.map((category, index) => (
