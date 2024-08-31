@@ -4,8 +4,8 @@ import { useBasket } from "../../../../contexts/BasketContext";
 import ChangeAmount from "../tools/ChangeAmount";
 
 export default function Food({ id, title, picture, description, price }) {
-  const basket = useBasket();
-  const productInCart = basket?.basket?.cart?.find((item) => item.product.id === id);
+  const { basket, products } = useBasket();
+  const productInCart = basket?.basket?.cart?.find((item) => item.product.id === id) || products?.find((item) => item.id === id);
   const productCount = productInCart ? productInCart.count : undefined;
   return (
     <div className="w-full basis-[50%] max-w-[50%] border-b-[0.0625rem] border-l-[0.0625rem] border-solid border-[rgb(235,237,240)]">

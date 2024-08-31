@@ -33,7 +33,6 @@ export const BasketProvider = ({ children }) => {
     mutationFn: (product) => axios.post(`${BASE_URL}/cart/add`, { productId: product.id }, UserToken),
     onSuccess: () => {
       refetch();
-      console.log(products);
     },
     onError: (error) => {
       console.error(error.message);

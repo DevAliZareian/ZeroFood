@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useBasket } from "../../../../contexts/BasketContext";
 
 export default function ChangeAmount({ product, count = 1 }) {
   const [amount, setAmount] = useState(count);
+  const { changeAmount } = useBasket();
   return (
     <div className="flex flex-col items-center mt-[0]">
       <div className="flex items-center justify-center min-h-[2.3125rem]">
@@ -19,6 +21,7 @@ export default function ChangeAmount({ product, count = 1 }) {
           <button
             onClick={() => {
               setAmount((prevAmount) => prevAmount - 1);
+              changeAmount(product, "decrease");
             }}
             className="inline-flex items-center justify-center shadow-div border-[0.09375rem] border-solid border-[rgba(255,0,166,0.06)] cursor-pointer transition-all w-[2rem] min-w-[2rem] h-[2rem] rounded-[50%] text-green-500 bg-transparent text-[0.875rem] font-bold"
             type="button"
@@ -33,6 +36,7 @@ export default function ChangeAmount({ product, count = 1 }) {
         <button
           onClick={() => {
             setAmount((prevAmount) => prevAmount + 1);
+            changeAmount(product, "increase");
           }}
           className="inline-flex items-center justify-center shadow-div border-[0.09375rem] border-solid border-[rgba(255,0,166,0.06)] cursor-pointer transition-all w-[2rem] min-w-[2rem] h-[2rem] rounded-[50%] text-green-500 bg-transparent text-[0.875rem] font-bold"
           type="button"
