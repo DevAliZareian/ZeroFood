@@ -58,10 +58,13 @@ export const BasketProvider = ({ children }) => {
     updateBasket(product.id, "add");
   };
   const removeProduct = (product) => {
-    console.log(product);
     setProducts((prevProducts) => prevProducts.filter((p) => p.id !== product));
     updateBasket(product, "remove");
   };
+  const clearBasket = () => {
+    setProducts([]);
+    updateBasket("clear");
+  };
 
-  return <BasketContext.Provider value={{ basket, products, addProduct, removeProduct, changeAmount, isPending }}>{children}</BasketContext.Provider>;
+  return <BasketContext.Provider value={{ basket, products, addProduct, removeProduct, changeAmount, clearBasket, isPending }}>{children}</BasketContext.Provider>;
 };
