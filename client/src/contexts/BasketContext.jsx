@@ -30,7 +30,7 @@ export const BasketProvider = ({ children }) => {
   }, [basket]);
 
   const { mutateAsync: updateBasket, isPending } = useMutation({
-    mutationFn: (product) => axios.post(`${BASE_URL}/cart/add`, { productId: product.id }, UserToken),
+    mutationFn: (product, action) => axios.post(`${BASE_URL}/cart/${action}`, { productId: product }, UserToken),
     onSuccess: () => {
       refetch();
     },
@@ -55,8 +55,13 @@ export const BasketProvider = ({ children }) => {
     } else {
       setProducts([product]);
     }
-    updateBasket(product);
+    updateBasket(product.id, "add");
+  };
+  const removeProduct = (product) => {
+    console.log(product);
+    setProducts((prevProducts) => prevProducts.filter((p) => p.id !== product));
+    updateBasket(product, "remove");
   };
 
-  return <BasketContext.Provider value={{ basket, products, addProduct, changeAmount, isPending }}>{children}</BasketContext.Provider>;
+  return <BasketContext.Provider value={{ basket, products, addProduct, removeProduct, changeAmount, isPending }}>{children}</BasketContext.Provider>;
 };
