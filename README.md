@@ -1,5 +1,5 @@
 # ZeroFood
- SnapFood Clone
+ SnappFood Clone
 
 
 ## Installation
