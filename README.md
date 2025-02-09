@@ -15,6 +15,27 @@ There are two distinct user roles within the system:
 1. Owner: owners can manage restaurant profiles, add and update menu items, and track orders and manage deliveries.
 2. User: users can manage their profiles, explore restaurants and order some food
 
+
+## Features
+
+- [x] User authentication and authorization (JWT)
+- [x] User profile creation and management
+- [x] Post creation and management
+- [x] Profile dashboard
+- [x] Owner dashboard
+
+
+## Technologies [Front-End]
+
+- React.js
+- React Query
+- React Router
+- Context API
+- Rest API
+- Lazy Loading
+- Suspense
+- Tailwind CSS
+
 ## Installation
 
 To run the project locally:
