@@ -4,6 +4,17 @@ A **React.js-based** food ordering platform inspired by [SnapFood](https://snapp
 
 ![UI-hero](https://github.com/DevAliZareian/ZeroFood/blob/main/resources/UI-hero.png)
 
+## Project Overview
+
+The project is a food ordering platform built using the MERN (MongoDB, Express.js, React.js, Node.js) stack.
+
+### User Roles
+
+There are two distinct user roles within the system:
+
+1. Owner: owners can manage restaurant profiles, add and update menu items, and track orders and manage deliveries.
+2. User: users can manage their profiles, explore restaurants and order some food
+
 ## Installation
 
 To run the project locally:
