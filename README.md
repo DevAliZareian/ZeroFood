@@ -21,7 +21,6 @@ There are two distinct user roles within the system:
 - [x] User authentication and authorization (JWT)
 - [x] User profile creation and management
 - [x] Post creation and management
-- [x] Profile dashboard
 - [x] Owner dashboard
 
 
